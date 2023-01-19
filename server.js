@@ -10,8 +10,11 @@ const morningController = require('./controllers/morning-setup')
 const foodController = require('./controllers/breakfast')
 
 const foodData = require('./utilities/foodData')
-const wakeData =  require('./utilities/wakeLogData')
+const wakeLogData =  require('./utilities/wakeLogData')
 const morningData = require('./utilities/wakeLogData')
+const breakfastlogs = require('./models/breakfast')
+const wholebasicmorninglogs = require('./models/morning-setup')
+const timewakingups = require('./models/wakeup')
 
 //Environments Vars
 const app = express()
@@ -34,20 +37,20 @@ app.use(cors())
 
 //Routes
 app.use('/', morningController);
-app.use('/breakfast-Entry', foodController);
+app.use('/breakfast', foodController);
 
 //Seeding (put info) into the MongoDB database
 
 app.get('/seed', async (req, res) => {
     //Breakfast data
-    await BreakFastFood.deleteMany({});
-    await BreakFastFood.insertmany(foodData);
+    await breakfastlogs.deleteMany({});
+    await breakfastlogs.insertMany(foodData);
 
-    await DailyMorningLog.deleteMany({});
-    await DailyMorningLog.insertmany(morningData);
+    await wholebasicmorninglogs.deleteMany({});
+    await wholebasicmorninglogs.insertMany(morningData);
 
-    await WakingUpLog.deleteMany({});
-    await WakingUpLog.insertmany(wakeData);
+    await timewakingups.deleteMany({});
+    await timewakingups.insertMany(wakeLogData);
 
     res.send('Done with mongo data upload!')
 })
