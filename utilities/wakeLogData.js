@@ -1,6 +1,7 @@
+
 const wakeLogData = [
-    {Date: date.toLocaleDateString(), Time: date.toLocaleTimeString(), Emotion: "Satisfied"},
-    {Date: date.toLocaleDateString(), Time: date.toLocaleTimeString(), Emotion: "Refreshed"}
+    {Date: Date, Time: "8:00am", Emotion: "Satisfied"},
+    {Date: Date, Time: "9:00am", Emotion: "Refreshed"}
 ]
 
 module.exports = wakeLogData
