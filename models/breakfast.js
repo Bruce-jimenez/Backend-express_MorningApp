@@ -1,11 +1,11 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
 const breakSchema = new mongoose.Schema({
-    Main: String,
-    Side: String,
-    Drink: String
+    main: String,
+    side: String,
+    drink: String
 });
 
-const breakFast = new mongoose.Schema('Breakfast log', breakSchema);
+const breakFast = mongoose.model('breakfastlogs', breakSchema);
 
 module.exports = breakFast;

@@ -1,11 +1,11 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
 const wakeSchema = new mongoose.Schema({
-   Date: date.toLocaleDateString(), 
-   Time: date.toLocaleTimeString(),
-   Emotion: String
+   date: { type: Date, default: Date.now },
+   time: String,
+   emotion: String
 });
 
-const wakeUp = new mongoose.model('Time Waking Up', wakeSchema);
+const wakeup = mongoose.model('timewakingups', wakeSchema);
 
-module.exports = wakeUp;
+module.exports = wakeup;

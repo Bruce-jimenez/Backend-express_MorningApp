@@ -1,12 +1,12 @@
-const mongoose = require('mongoose')
-const wakeUp = require('./wakeup')
-const breakFast = require('./breakfast')
+const mongoose = require('mongoose');
+const BreakFast = require('./breakfast');
+const wakeUp = require('./wakeup');
 
 const morningSchema = new mongoose.Schema({
-    wakeUp,
-    breakFast
+    wakingTimer: [wakeUp.schema],
+    foodLog: [BreakFast.schema]
 });
 
-const MorningLog = new mongoose.model('Whole basic Morning Log', morningSchema);
+const MorningLog = mongoose.model('wholebasicmorninglogs', morningSchema);
 
 module.exports = MorningLog;
