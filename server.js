@@ -6,12 +6,17 @@ const express = require('express')
 const mongoose = require('mongoose')
 const db = mongoose.connection
 
+//Controllers that show me the parsed info from the mongoDB database
 const morningController = require('./controllers/morning-setup')
 const foodController = require('./controllers/breakfast')
+const timeController =  require('./controllers/wakeup')
 
+//Information to Parse through to the mongoDB database
 const foodData = require('./utilities/foodData')
 const wakeLogData =  require('./utilities/wakeLogData')
-const morningData = require('./utilities/wakeLogData')
+const morningData = require('./utilities/morningLog')
+
+//Schema (Outline of all information) that is being processed by the two groups above
 const breakfastlogs = require('./models/breakfast')
 const wholebasicmorninglogs = require('./models/morning-setup')
 const timewakingups = require('./models/wakeup')
@@ -37,7 +42,8 @@ app.use(cors())
 
 //Routes
 app.use('/', morningController);
-app.use('/breakfast', foodController);
+app.use('/', foodController);
+app.use('/', timeController);
 
 //Seeding (put info) into the MongoDB database
 
@@ -55,7 +61,7 @@ app.get('/seed', async (req, res) => {
     res.send('Done with mongo data upload!')
 })
 
-///////
+////End Program Response
 
 app.listen(PORT, () => {
     console.log('This Message means that it is the end of Server.js', PORT)
