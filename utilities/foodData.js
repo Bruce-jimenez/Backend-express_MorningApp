@@ -1,6 +1,6 @@
 const foodData = [
-    {Main: "Bagel with jelly", Side: "Omelette", Drink: "Cold Americano"},
-    {Main: "Bagel", Side: "Omelette ", Drink: "Cold Latte"}
+    {main: "Bagel with jelly", side: "Omelette", drink: "Cold Americano"},
+    {main: "Bagel", side: "Omelette ", drink: "Cold Latte"}
 ]
 
 module.exports = foodData;
