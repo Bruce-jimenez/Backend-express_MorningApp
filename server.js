@@ -38,7 +38,7 @@ db.on('disconnected', () => console.log('mongo disconnected'))
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
 app.use(express.static('public'))
-app.use(cors())
+app.use(cors({ origin: '*' }))
 
 //Routes
 app.use('/', morningController);
